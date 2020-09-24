@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Редактировать событие</title>
+    <meta charset="UTF-8">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/script1.js"></script>
+</head>
+
+<body>
+
+    <div class="form">
+        <div class="container">
+
+            <h1>Редактирование</h1>
+            <p>Пожалуйста, заполните поля для редактирования события.</p>
+            <hr>
+            <form>
+                <p>
+                    <label for="title"><b>Название</b></label>
+                    <input type="text" id="title" placeholder="Введите название события" name="title" required> <br>
+                </p>
+                <p>
+                    <label for="description"><b>Описание</b></label>
+                    <input type="text" id="description" placeholder="Введите описание" name="description" required><br>
+                </p>
+                <p>
+                    <label for="date1"><b>Дата</b></label>
+                    <input type="date" id="date1" name="date1" required><br>
+                </p>
+                <p>
+                    <label for="time1"><b>Начало</b></label>
+                    <input type="time" id="time1" name="time1" required><br>
+                </p>
+                <p>
+                    <label for="time2"><b>Окончание</b></label>
+                    <input type="time" id="time2" name="time2" required><br>
+                </p>
+                <p>
+                    <label for="place"><b>Место события</b></label>
+                    <input type="text" id="place" placeholder="Введите место" name="place"><br>
+                </p>
+                <p>
+                    <label for="list1"><b>Напомнить</b></label>
+                    <button type="button" id="addrem" name="addrem" onclick="AddReminder()">+Напоминание</button>
+                <ul class="listrem" id="listrem" name="listrem">
+                </ul>
+                </p>
+                <p>
+                    <label for="color"><b>Цвет</b></label>
+                    <input type="color" id="color" name="color" value="#ff0000" onclick=""><br>
+                </p>
+
+                <button type="button" id="edit" onclick="EditApp()">Изменить</button>
+
+                <button type="button" class="b-entry"
+                    onclick="window.location.replace('./calendar.html');">Отмена</button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Firebase -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyA7CeV6A5o-pCO13PRnUMV_Tb5lfyplWbw",
+            authDomain: "mycalendar-b4f2d.firebaseapp.com",
+            databaseURL: "https://mycalendar-b4f2d.firebaseio.com",
+            projectId: "mycalendar-b4f2d",
+            storageBucket: "mycalendar-b4f2d.appspot.com",
+            messagingSenderId: "584244575886",
+            appId: "1:584244575886:web:28faab74eeae6ee01e13df",
+            measurementId: "G-XBTCZ00ZX9"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <script>
+        function AddReminder() {
+            var list = document.getElementById("listrem");
+            var li = document.createElement("li");
+            var input = document.createElement("input")
+            input.setAttribute("type", "time");
+            input.setAttribute("id", `idlist${list.childElementCount}`);
+            li.appendChild(input);
+            list.appendChild(li);
+        }
+    </script>
+
+    <script>
+        window.onload = function () {
+            
+            document.getElementById("title").value = sessionStorage.title;
+            document.getElementById("description").value = sessionStorage.description;
+            document.getElementById("date1").value = sessionStorage.date1;
+            document.getElementById("time1").value = sessionStorage.time1;
+            document.getElementById("time2").value = sessionStorage.time2;
+            document.getElementById("place").value = sessionStorage.place;
+            document.getElementById("color").value = sessionStorage.color;
+        }
+    </script>
+
+
+
+</body>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>Календарь</title>
+  <link rel="stylesheet" href="../css/main.css">
+
+  
+
+  <script src="../js/script1.js"></script>
+</head>
+
+<body>
+  <!-- Side navigation -->
+  <div class="topnav">
+    <a href="../pages/calendar.html">Главная</a>
+    <a href="../pages/appointments.html">События</a>
+    <a href="../pages/profile.html">Профиль</a>
+    <a href="../index.html" onclick="signOut()">Выйти</a>
+</div>
+
+  <main>
+    <div>
+      <div class="contcalend">
+        <table id="calendar" cellspacing="0" cellpadding="1">
+          <thead>
+            <tr>
+              <td><b>‹</b></td>
+              <td colspan="5">
+              <td><b>›</b></td>
+            </tr>
+            <tr>
+              <td>Пн</td>
+              <td>Вт</td>
+              <td>Ср</td>
+              <td>Чт</td>
+              <td>Пт</td>
+              <td>Сб</td>
+              <td>Вс</td>
+            </tr>
+          </thead>
+          <tbody id="calendarbody" class="calendarbody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <script>     
+      calendar("calendar", new Date().getFullYear(), new Date().getMonth());
+      // переключатель минус месяц
+      document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function () {
+        calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) - 1);
+      }
+      // переключатель плюс месяц
+      document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function () {
+        calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month) + 1);
+      }
+    </script>
+
+
+
+
+    <div>
+      <h2 id="h2list">События</h2>
+      <ul class="listapp" id="listapp">
+
+      </ul>
+    </div>
+
+    <div>
+      <button type="button" class="b-entry" onclick=ReplaceToAddApp()>Добавить</button>
+    </div>
+
+  </main>
+
+  <!-- Firebase -->
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyA7CeV6A5o-pCO13PRnUMV_Tb5lfyplWbw",
+      authDomain: "mycalendar-b4f2d.firebaseapp.com",
+      databaseURL: "https://mycalendar-b4f2d.firebaseio.com",
+      projectId: "mycalendar-b4f2d",
+      storageBucket: "mycalendar-b4f2d.appspot.com",
+      messagingSenderId: "584244575886",
+      appId: "1:584244575886:web:28faab74eeae6ee01e13df",
+      measurementId: "G-XBTCZ00ZX9"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+  </script>
+
+
+
+  <script>
+    var date = new Date();
+    var CurrentDateString = date.getFullYear() + "-" + ('0' + (date.getMonth() + 1)).slice(-2) + "-" + ('0' + `${date.getDate()}`).slice(-2);
+    sessionStorage.currentdate=CurrentDateString;
+    ChangeDate(null, `${CurrentDateString}`);
+  </script>
+
+
+
+</body>
+
+</html>
