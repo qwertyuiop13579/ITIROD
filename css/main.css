@@ -80,26 +80,78 @@
 /* Full-width input fields */
 input[type=text] {
     width: 50%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    padding: 10px;
+    margin: 5px 0 15px 0;
     display: inline-block;
-    border: none;
+    border: 1px solid #cccccc;
     background: #f1f1f1;
+    
 }
 
-input[type=datetime-local] {
+input[type=date] {
   width: 180px;
   padding: 10px;
   margin: 5px 0 10px 0;
   display: inline-block;
-  border: none;
+  border: 1px solid #cccccc;
+  background: #f1f1f1;
+}
+
+input[type=time] {
+  width: 80px;
+  padding: 10px;
+  margin: 5px 0 5px 0;
+  display: inline-block;
+  border: 1px solid #cccccc;
   background: #f1f1f1;
 }
 
 
+.check1{
+  background: #e41919;
+}
+
+
+
+
 .b-little{
-background-color: #6916b8;
-color: #ffc400;
+  padding: 10px;
+  margin: 2px 10px 10px 2px;
+background-color: #2d60c0;
+color: #ffffff;
+
+}
+
+.btn1{
+  padding:5px;
+  color:#007bff;
+  background-color:transparent;
+  background-image:none;
+  border-color:#007bff;
+  margin:5px 0 10px 0;
+  font-size: 1.1rem;
+}
+
+.btn1:hover{
+  color:#fff;
+  background-color:#007bff;
+  border-color:#007bff;
+}
+
+.btn2{
+  padding:5px;
+  color:#b91919;
+  background-color:transparent;
+  background-image:none;
+  border-color:#b91919;
+  margin:5px 0 10px 0;
+  font-size: 1.1rem;
+}
+
+.btn2:hover{
+  color:#fff;
+  background-color:#b91919;
+  border-color:#b91919;
 }
 
 .listrem{
