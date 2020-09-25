@@ -11,7 +11,6 @@ function formattedDate(d = new Date) {
   return `${year}/${month}/${day}`;
 }
 
-
 async function ChangeDate(elem, mess) {
 
   if (document.querySelectorAll('td.active').length != 0) {
@@ -186,6 +185,10 @@ async function ShowAllApps() {
       button.setAttribute("onClick", `DeleteAppFromAllApps('${keys[apps.indexOf(element)]}')`);
       div.appendChild(button);
 
+      let div1 = document.createElement("div");
+      let label1=document.createElement("label");
+      label1.setAttribute("for","active");
+      label1.innerText="Статус";
       checkbox = document.createElement("input");
       checkbox.setAttribute("type", "checkbox");
       checkbox.setAttribute("class", "check1");
@@ -193,7 +196,9 @@ async function ShowAllApps() {
       if (element.active) checkbox.removeAttribute("checked");
       else checkbox.setAttribute("checked", "checked");
       checkbox.setAttribute("onClick", `ChangeStateApp('${keys[apps.indexOf(element)]}')`);
-      div.appendChild(checkbox);
+      div1.appendChild(checkbox);
+      div1.appendChild(label1);
+      div.appendChild(div1);
 
       li.appendChild(input);
       li.appendChild(label);
